@@ -1,3 +1,6 @@
 {
-	"telegram-token": ""
+	"telegram-token": "",
+	"admin-users": [],
+	"allowed-users": [],
+	"version": "0.0.1"
 }
