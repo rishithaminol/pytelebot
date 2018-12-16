@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Test script for webhook
+
+curl --tlsv1 -v -k -X POST -H "Content-Type: application/json" \
+      -H "Cache-Control: no-cache" \
+      -d @private_message.json "https://localhost:9090/RMINOLBOT"

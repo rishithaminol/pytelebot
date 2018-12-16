@@ -1,0 +1,23 @@
+{
+  "message": {
+    "chat": {
+      "first_name": "Rishitha",
+      "id": 361267292,
+      "last_name": "Minol",
+      "type": "private",
+      "username": "rminol"
+    },
+    "date": 1544883404,
+    "from": {
+      "first_name": "Rishitha",
+      "id": 361267292,
+      "is_bot": false,
+      "language_code": "en",
+      "last_name": "Minol",
+      "username": "rminol"
+    },
+    "message_id": 45,
+    "text": "Hi"
+  },
+  "update_id": 13422311
+}
