@@ -1,0 +1,32 @@
+{
+  "message": {
+    "chat": {
+      "id": -1001280280300,
+      "title": "පැරණි C ක්‍රමලේඛන භාෂාව",
+      "type": "supergroup"
+    },
+    "date": 1544978424,
+    "from": {
+      "first_name": "Rishitha",
+      "id": 361267292,
+      "is_bot": false,
+      "language_code": "en",
+      "last_name": "Minol",
+      "username": "rminol"
+    },
+    "left_chat_member": {
+      "first_name": "rminol",
+      "id": 794502485,
+      "is_bot": true,
+      "username": "rminol_bot"
+    },
+    "left_chat_participant": {
+      "first_name": "rminol",
+      "id": 794502485,
+      "is_bot": true,
+      "username": "rminol_bot"
+    },
+    "message_id": 39
+  },
+  "update_id": 13422315
+}
