@@ -2,6 +2,9 @@
 
 # Test script for webhook
 
-curl --tlsv1 -v -k -X POST -H "Content-Type: application/json" \
-      -H "Cache-Control: no-cache" \
-      -d @private_message.json "https://localhost:9090/RMINOLBOT"
+file_name="$1"
+
+curl --tlsv1 -k -X POST \
+	  -H "Content-Type: application/json" \
+	  -H "Cache-Control: no-cache" \
+	  -d "$file_name" "https://localhost:9090/RMINOLBOT"

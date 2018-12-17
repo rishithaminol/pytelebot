@@ -11,28 +11,33 @@ sys.path.append('./src')
 import telegram
 import config
 import json
+import pprint
+from colored import fg, bg, attr
+from http.server import HTTPServer, BaseHTTPRequestHandler
 
 bot = telegram.Bot(token=config.get_token())
 
-# updates = bot.get_updates()
+def is_json(jsonstr):
+	try:
+		json_obj = json.loads(jsonstr)
+	except ValueError as e:
+		return False
 
-# chat_id = updates[-1].message.chat_id
-# print("chat_id: " + str(chat_id))
-# bot.send_message(chat_id=chat_id, text="Hello rishitha Minol")
+	return True
 
-# a = """
-# <b style="color: green">bold</b> <i>italic</i> <a href="http://google.com">link</a>
-# """
+"""
+check whether the request is application/json and body
+contains valid json data as our needs
+	req_body - string(josn string)
+	headers - request headers as a list
+"""
+def is_json_req(req_body, headers):
+	if headers['Content-Type'] == 'application/json' and is_json(req_body):
+		return True
 
-# bot.send_message(chat_id=-1001280280300, 
-#                   text=a, 
-#                   parse_mode=telegram.ParseMode.HTML)
+	return False		
 
-from http.server import HTTPServer, BaseHTTPRequestHandler
-
-from io import BytesIO
-
-class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
+class CustomRequestHandler(BaseHTTPRequestHandler):
 	def do_GET(self):
 		self.send_response(200)
 		self.end_headers()
@@ -41,12 +46,24 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
 	def do_POST(self):
 		content_length = int(self.headers['Content-Length'])
 		body = self.rfile.read(content_length)
+
+		for header in self.headers:
+			print(fg(198) + header + ": " + self.headers[header] + attr(0))
+
 		json_string = body.decode("utf-8")
+
+		if is_json_req(json_string, self.headers):
+			print(fg(220) + "Request contains valid data" + attr(0))
+		else:
+			self.send_response(404)
+			self.end_headers()
+			return
+
 		body_dict = json.loads(json_string)
-		print(json_string)
+		print(fg(27) + json.dumps(body_dict, indent=4) + attr(0))
 		update = telegram.Update.de_json(body_dict, bot)
-		# a = bot.process_new_updates([update])
-		print(update)
+		print(fg(119) + json.dumps(update.to_dict(), indent=4) + attr(0))
+		print(dir(update))
 		self.send_response(200)
 		self.end_headers()
 
@@ -56,5 +73,5 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
 		
 		return True
 
-httpd = HTTPServer(('localhost', 5000), SimpleHTTPRequestHandler)
+httpd = HTTPServer(('localhost', 5000), CustomRequestHandler)
 httpd.serve_forever()
