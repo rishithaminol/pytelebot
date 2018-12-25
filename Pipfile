@@ -1,0 +1,13 @@
+[[source]]
+name = "pypi"
+url = "https://git.centavosystems.com/rminol/pytelebot.git"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+python-telegram-bot = "*"
+colored = "*"
+
+[requires]
+python_version = "3.5"

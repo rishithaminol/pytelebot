@@ -1,4 +1,0 @@
-# Most of the debugging packages here work only
-#   if we enable debugging in config.json
-#
-
