@@ -2,6 +2,6 @@
 	"telegram-token": "",
 	"admin-users": [],
 	"allowed-users": [],
-	"debug": "true",
+	"production": "false",
 	"version": "0.0.1"
 }

@@ -8,4 +8,4 @@ file_name="$1"
 curl --tlsv1 -k -X POST \
 	  -H "Content-Type: application/json" \
 		-H "Accept-Encoding: gzip, deflate" \
-	  -d @"$file_name" "https://localhost:9090/RMINOLBOT"
+	  -d @"$file_name" "https://localhost:9090"

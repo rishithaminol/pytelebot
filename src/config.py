@@ -5,7 +5,7 @@ import json
 with open('config.json') as f:
 	data = json.load(f)
 
-if data['debug'] == 'true':
+if data['production'] == 'false':
 	DEBUG = True
 else:
 	DEBUG = False

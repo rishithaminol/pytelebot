@@ -9,6 +9,7 @@ verify_ssl = true
 python-telegram-bot = "*"
 colored = "*"
 watchdog = "*"
+flask = "*"
 
 [requires]
 python_version = "3.5"
