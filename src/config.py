@@ -12,3 +12,6 @@ else:
 
 def get_token():
 	return data['telegram-token']
+
+def allowed_users():
+	return data['allowed-users']

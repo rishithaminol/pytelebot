@@ -1,6 +1,6 @@
 [[source]]
 name = "pypi"
-url = "https://git.centavosystems.com/rminol/pytelebot.git"
+url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
@@ -8,6 +8,7 @@ verify_ssl = true
 [packages]
 python-telegram-bot = "*"
 colored = "*"
+watchdog = "*"
 
 [requires]
 python_version = "3.5"

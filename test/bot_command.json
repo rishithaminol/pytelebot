@@ -1,0 +1,30 @@
+{
+    "update_id": 13422320,
+    "message": {
+        "date": 1545672999,
+        "entities": [
+            {
+                "type": "bot_command",
+                "length": 6,
+                "offset": 0
+            }
+        ],
+        "chat": {
+            "type": "private",
+            "first_name": "Rishitha",
+            "id": 361267292,
+            "last_name": "Minol",
+            "username": "rminol"
+        },
+        "text": "/start",
+        "message_id": 51,
+        "from": {
+            "language_code": "en",
+            "last_name": "Minol",
+            "id": 361267292,
+            "username": "rminol",
+            "first_name": "Rishitha",
+            "is_bot": false
+        }
+    }
+}
