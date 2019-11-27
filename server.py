@@ -1,23 +1,43 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
-import sys
-import os
-sys.path.append('./src')
+from dotenv import load_dotenv
+load_dotenv()
+import requests, sys, os
 
-from telegram import Bot
-from telegram.ext import MessageHandler, Dispatcher, Updater, CommandHandler
-import config	# Local package
-import json
-from colored import fg, bg, attr
+tbot_token = os.getenv('TBOT_TOKEN')
+tbot_url = 'https://api.telegram.org/bot{}/'.format(tbot_token)
 
-updater = Updater(token=config.get_token())
-dispatcher = updater.dispatcher
+class TGUrlConstructor(object):
+    def construct_url(self):
+        final_url = []
+        for key, val in self.parameter_dict.items():
+            if val is not None:
+                final_url.append("{key}={val}".format(key=key, val=val))
 
-def start_func(bot, update):
-	bot.send_message(chat_id=update.message.chat_id, text="I'm a bot, please talk to me!")
+        final_url = "&".join(final_url)
 
-start_handler = CommandHandler('start', start_func)
-dispatcher.add_handler(start_handler)
+        return tbot_url + self.constructor_id + '?' + final_url
+    
+    def send(self):
+        respon = requests.get(self.construct_url())
+        print(respon)
 
-updater.start_webhook(listen='0.0.0.0', port=5000)
-print("hello")
+class sendMessage(TGUrlConstructor):
+    def __init__(self, chat_id=None, text=None, parse_mode=None, disable_web_page_preview=None,
+                    reply_to_message_id=None, reply_markup=None):
+        self.chat_id = chat_id
+        self.text = text
+        self.parse_mode = parse_mode
+
+        self.constructor_id = 'sendMessage'
+        self.parameter_dict = {
+            'chat_id': self.chat_id,
+            'text': self.text,
+            'parse_mode': self.parse_mode
+        }
+
+x = sendMessage(chat_id=-364409911, text='|'.join(sys.argv[1:]))
+print(x.construct_url())
+print(x.send())
+
+# send_message(tbot_url, -364409911, '|'.join(sys.argv[1:]))
