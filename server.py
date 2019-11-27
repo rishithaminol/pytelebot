@@ -36,7 +36,7 @@ class sendMessage(TGUrlConstructor):
             'parse_mode': self.parse_mode
         }
 
-x = sendMessage(chat_id=-364409911, text='|'.join(sys.argv[1:]))
+x = sendMessage(chat_id=-364409911, text='|'.join(sys.argv[1:]), parse_mode='HTML')
 print(x.construct_url())
 print(x.send())
 
