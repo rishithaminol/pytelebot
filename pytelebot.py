@@ -37,14 +37,8 @@ class sendMessage(TGUrlConstructor):
             'parse_mode': self.parse_mode
         }
 
-<<<<<<< HEAD:server.py
-x = sendMessage(chat_id=-364409911, text='|'.join(sys.argv[1:]), parse_mode='HTML')
-x.construct_url()
-x.send()
-=======
 x = sendMessage(chat_id=tbot_chat_id, text='|'.join(sys.argv[1:]), parse_mode='HTML')
 print(x.construct_url())
 print(x.send())
->>>>>>> 7ff19acc41879f152688c8ffbfe0d615f42e086e:pytelebot.py
 
 # send_message(tbot_url, tbot_chat_id, '|'.join(sys.argv[1:]))
